@@ -1,0 +1,62 @@
+h1 a{
+
+    font-family: 'Lobster';
+    font-size: 14px;
+}
+
+body {
+
+    font-size: 14px;
+    font-family: 'Lobster';
+}
+.page-header {
+    background-color:#293f50;
+   padding: 10px 20px 10px 20px;
+
+}
+.page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
+    color: #ffffff;
+    font-size: 26pt;
+
+    text-decoration: none;
+}
+h2{
+  font-family: 'Lobster';
+}
+.content {
+    /*margin-top: 20px;
+    margin-left: 10px;*/
+
+}
+
+input[type = 'submit']{
+    text-align: center;
+
+}
+	/*background: #f06226;
+	border:0;
+	/*color: #fff;
+	padding: 10px 15px;
+	cursor: pointer;
+}*/
+
+.footer{
+background-color:#293f50;
+padding: 10px 20px 10px 20px;
+font-size:16px;
+margin-left:300px;
+margin-right: 350px;
+}
+.side {
+    float: left;
+    width: 30%;
+}
+
+/* Clear floats after the columns */
+.container:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+/*display: grid;
+  grid-template-columns: 1fr 1fr 1fr;*/

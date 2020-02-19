@@ -1,0 +1,38 @@
+{% extends 'quiz/base.html' %}
+
+{% block content %}
+<!--<h3 style="color:green">Congratulations</h3>-->
+<!--<p style="color:red"><strong>You got {{score}} out of {{total}} </strong></p>-->
+<h2 style="font-family: 'Lobster';font-size:14px;text-align:">Quiz Results</h2>
+{% if message %}
+<p><strong>{{message}}</strong></p>
+{% endif %}
+{% if score %}
+<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Quiz</th>
+        <th>Data Analytics</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>Total no.of Questions</td>
+        <td>{{total}}</td>
+
+    </tr>
+    <tr>
+        <td>No.of Questions Attempted</td>
+        <td>{{attemted}}</td>
+    </tr>
+    <tr>
+        <td>No.of Correct Answers</td>
+        <td>{{score}}</td>
+    </tr>
+    </tbody>
+    </table>
+<a  class="btn btn-success center-block" style="width:30%;text-align: center;padding-bottom:5px" href="{% url 'percentile' %}">getpercentile</a>
+{% endif %}
+
+<br>
+{% endblock %}

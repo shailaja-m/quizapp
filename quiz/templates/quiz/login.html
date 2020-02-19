@@ -1,0 +1,21 @@
+{% extends 'quiz/base1.html' %}
+
+{% block content %}
+{% if message %}
+<br>
+<h2 style="text-align:center;font-size:26px;"><strong>Sorry</strong></h2>
+<h4 style="text-align:center;font-size:20px;"><strong>{{message}}!</strong></h4>
+<br>
+<br>
+<br>
+{% else %}
+<h2>Login</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button style="background-color:#cbe2c1;" type="submit">Login</button>
+
+</form>
+<br>
+{% endif %}
+{% endblock %}

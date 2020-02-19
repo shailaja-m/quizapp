@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+    <link rel="stylesheet" href="{% static 'css/quiz.css' %}">
+
+    <meta charset="UTF-8">
+    <title>Analytics Expert Quiz</title>
+</head>
+<body style="font-size:14px">
+
+ <div class="page-header" style="font-size:16px;margin-left:200px;margin-right: 210px;padding-top:-10px;">
+     <div><a href="http://www.tvashtaa.com"><img src = "{% static 'img/logo.png' %}" style = "width: 14%;border: 5px solid #A3B00D; margin-left:-20px;margin-top:-29px;position:absolute;"></a>
+     <h2 style="text-align: center;color:white;">Analytics Quiz <small style="color:white">in 'R' Programming</small></h2>
+     <p style="text-align: center;color:white;"> www.Tvashtaa.com <strong>+917286900966 </strong></p>
+
+     </div>
+     <div style="float:right;position:relative; left:10px; top:-20px; color:white;" >
+     {% if request.user.is_authenticated %}
+         <a href=""style="color:white">{{request.user}}</a> | <a href="{% url 'logout' %}" style="color:white">Logout</a>
+      {% else %}
+        <a href="{% url 'login' %}" style="color:white;">Login</a> | <a href="{% url 'signup' %}" style="color:white;">Signup</a>
+      {% endif %}
+     </div>
+         </div>
+
+
+
+ <div class="page-header" style="background-color :#cbe2c1;font-size:16px;margin-left:200px;margin-right: 210px;margin-top:-20px;">
+
+    {% block content %}
+            {% endblock %}
+</div>
+
+<div class="page-header" style="font-size:16px;margin-left:200px;margin-right: 210px; margin-top:-40px;">
+<footer style="">
+    <a style="text-align:center;display:block;color:white;" href="{{myurl}}">www.Tvashata.com</a>
+</footer>
+</div>
+</body>

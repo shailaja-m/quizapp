@@ -1,0 +1,83 @@
+{% extends 'quiz/base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/quiz.css' %}">
+<!--<div id="quiz-time-left"></div>-->
+<input type="hidden" id="myVar1" name="variable" value="{{ min }}">
+<input type="hidden" id="myVar2" name="variable" value="{{ sec }}">
+<p id="demo" style="float:right; color:black;font-size:18px;"></p>
+
+<br>
+<!--<p style="color:red">Remaining Questions:{{qus}}/{{totalqus}}</p>-->
+<p id="alert"></p>
+<script type="text/javascript" src="{% static 'js/quiz.js' %}"></script>
+
+{% if userans == None%}
+{% if message %}<p style="color:red;font-family: 'Lobster';font-size:18px;text-align: center;"><strong>{{ message }}</strong></p>{% endif %}
+{% endif %}
+
+<hr>
+<form name="questionForm" action="{% url 'quizpage47' value=1 %}"  method="post" style="font-size:20px;">
+    {% csrf_token %}
+	<br>
+                <ol>
+				<h4 style="font-size:20px;"> {{ counter }}.{{ questions }}</h4>
+				<input type = "radio" name = "{{ questions.id }}" value = "{{ questions.option1 }}" id = "questions1a" {% if questions.option1 == userans %} checked {% endif %}> {{ questions.option1 }}<br>
+				<input type = "radio" name = "{{ questions.id }}" value = "{{ questions.option2 }}" id = "questions1b" {% if questions.option2 == userans %} checked {% endif %}> {{questions.option2 }}<br>
+				<input type = "radio" name = "{{ questions.id }}" value = "{{ questions.option3 }}" id = "questions1c" {% if questions.option3 == userans %} checked {% endif %}> {{ questions.option3 }}<br>
+				<input type = "radio" name = "{{ questions.id }}" value = "{{ questions.option4 }}" id = "questions1d" {% if questions.option4 == userans %} checked {% endif %}> {{ questions.option4 }}
+
+                </ol>
+	        <br><br>
+                {% if userans == None %}
+	            <p style="color:green;text-align: center;"><strong >Note:confirm your Answers then hit submit</strong></p>
+				<input style="width:30%" class="btn btn-success center-block" type = "submit" value = "Submit"  onclick="customSubmit()">
+	            {% else %}
+	            <input style="width:30%" class="btn btn-success center-block" type = "submit" value = "Next" formaction="{% url 'quizpage48' value=0 %}"  onclick="customSubmit()">
+	            <!--<a  class="btn btn-success center-block" style="width:30%;text-align: center;margin-bottom:20px;" href="{% url 'quizpage2' value=0 %}">Next</a>-->
+	            {% endif %}
+	            <input type="hidden" name="minute">
+	            <input type="hidden" name="second">
+			</form>
+{% if userans %}
+<hr style="border: 5px solid #A3B00D">
+
+<!--<h4 style="color:blue">You Choose : {{p}}</h4>-->
+<div class="container">
+<div class="side">
+<h4 style="color:#800080;">Correct Answer : {{corrans}}</h4>
+
+{% if corrans == userans %}
+<div >
+	<img src = "{% static 'img/correct.png' %}" style="width:10%" >
+</div>
+{% else %}
+<div >
+	<h4 style="color:blue;%">You Choose : {{userans}}</h4>
+	<img src = "{% static 'img/wrong.png' %}"style="width:10%">
+</div>
+
+{% endif %}
+</div>
+<div class="side">
+	<h4 style="color:blue;">No.of Correct : {{score}}</h4>
+</div>
+<div class="side">
+		<h4 style="color:blue;">percentage : {{percentage|floatformat:0}}</h4>
+</div>
+</div>
+<br>
+
+
+{% endif %}
+			<br>
+
+
+<!--<script>-->
+    <!--function myFunction(){-->
+    <!--alert("Go to Next")-->
+    <!--}-->
+<!--</script>-->
+
+{% endblock %}
+

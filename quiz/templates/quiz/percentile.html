@@ -1,0 +1,42 @@
+{% extends 'quiz/base.html' %}
+
+{% block content %}
+{% if iname %}
+<h2 style="font-size:26px;text-align:center;">You have successfully completed your test {{iname}}!</h2>
+<h4 style="font-size:26px;text-align:center;">Your percentile is {{percentile|floatformat:0}}%  </h4>
+<h2 style="font-size:26px;text-align:center;">{{message}}</h2>
+{% if message == "Successfull.Take certificate at Tvashtaa"%}
+<a  class="btn btn-success center-block" style="width:30%;text-align: center;" href="{% url 'generatepdf' %}">Print</a>
+{% endif %}
+<br>
+{% endif %}
+
+
+{% if name %}
+<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Students</th>
+        <th>Scores</th>
+        <th>Ranks</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for i,j in name %}
+
+
+    <tr>
+        <td>{{i.user}}</td>
+        <td>{{i.score}}</td>
+        <td>{{j|floatformat:0}}</td>
+
+    </tr>
+    {% endfor %}
+
+
+    </tbody>
+    </table>
+{% endif %}
+
+<br>
+{% endblock %}

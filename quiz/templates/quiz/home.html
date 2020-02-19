@@ -1,0 +1,27 @@
+{% extends 'quiz/base1.html' %}
+
+{% block content %}
+{% if user.is_authenticated %}
+ <h3>Hi {{ user.username }}!</h3>
+<br>
+
+<h4>1.The test contains 60 questions and you have 60 mins to complete test.</h4>
+<h4>2.Sign up with proper user name.u will get cerficate with that name.</h4>
+<h4>3.Should not press browser back button when exam is running.Your work will be lost.</h4>
+<h4>4.Eligible for certification who gets more than 80%.</h4>
+<h4>5.Application allows 3 attempts to take exam.</h4>
+<h4>6.Give proper name when you signup.Name will display on certificate.</h4>
+<br>
+<a style="width:30%" class="btn btn-success center-block" href="{% url 'quizpage1' value=0 %}">Start the Quiz</a>
+<br>
+<br>
+
+{% else %}
+<br>
+<h2 style="font-size:26px;text-align:center;">If you are a First time user please signup.</h2>
+<br>
+<br>
+<br>
+
+{% endif %}
+{% endblock %}
